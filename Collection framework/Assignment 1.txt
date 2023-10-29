@@ -1,0 +1,22 @@
+import java.util.HashMap;
+
+public class HashMapInitializationExample {
+    public static void main(String[] args) {
+        // Initialize a HashMap with String keys and Integer values
+        HashMap<String, Integer> hashMap = new HashMap<>();
+
+        // Add key-value pairs to the HashMap
+        hashMap.put("John", 25);
+        hashMap.put("Alice", 30);
+        hashMap.put("Bob", 28);
+        hashMap.put("Eve", 22);
+
+        // Display the contents of the HashMap
+        System.out.println("HashMap Contents: " + hashMap);
+
+        // Accessing values by key
+        String name = "Alice";
+        int age = hashMap.get(name);
+        System.out.println(name + "'s age is " + age);
+    }
+}

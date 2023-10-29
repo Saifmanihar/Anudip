@@ -1,0 +1,44 @@
+// Interface "Person"
+interface Person {
+    void speak();
+}
+
+// Class "Student" implements the "Person" interface
+class Student implements Person {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void speak() {
+        System.out.println("Student " + name + " is speaking.");
+    }
+}
+
+// Class "Teacher" implements the "Person" interface
+class Teacher implements Person {
+    private String name;
+
+    public Teacher(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void speak() {
+        System.out.println("Teacher " + name + " is speaking.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create objects of the Student and Teacher classes
+        Person student = new Student("Alice");
+        Person teacher = new Teacher("Mr. Smith");
+
+        // Call the "speak" method for both objects
+        student.speak();
+        teacher.speak();
+    }
+}

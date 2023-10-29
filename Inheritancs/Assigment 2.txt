@@ -1,0 +1,39 @@
+// Parent class "Person"
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void speak() {
+        System.out.println("Hello, I am a person.");
+    }
+}
+
+// Child class "Student" inherits from Person
+class Student extends Person {
+    int grade;
+
+    public Student(String name, int age, int grade) {
+        super(name, age);
+        this.grade = grade;
+    }
+
+    public void study() {
+        System.out.println("I am a student and I am studying.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an object of the Student class
+        Student student = new Student("Alice", 20, 12);
+
+        // Call methods from both the parent and child classes
+        student.speak();
+        student.study();
+    }
+}

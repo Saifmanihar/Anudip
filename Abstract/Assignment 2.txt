@@ -1,0 +1,49 @@
+// Abstract class "BankAccount"
+abstract class BankAccount {
+    String accountNumber;
+    double balance;
+
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    // Abstract methods
+    abstract void deposit(double amount);
+    abstract void withdraw(double amount);
+}
+
+// Subclass "CheckingAccount" inherits from "BankAccount"
+class CheckingAccount extends BankAccount {
+    public CheckingAccount(String accountNumber, double balance) {
+        super(accountNumber, balance);
+    }
+
+    @Override
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: $" + amount);
+    }
+
+    @Override
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+        } else {
+            System.out.println("Insufficient funds. Withdrawal not allowed.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an object of the CheckingAccount class
+        CheckingAccount account = new CheckingAccount("123456", 1000.0);
+
+        // Call the "deposit" and "withdraw" methods
+        account.deposit(500.0);
+        account.withdraw(200.0);
+        account.withdraw(800.0);  // This withdrawal will fail due to insufficient funds
+    }
+}

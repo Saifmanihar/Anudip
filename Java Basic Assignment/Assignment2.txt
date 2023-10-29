@@ -1,0 +1,33 @@
+package day1;
+
+
+
+import java.util.Scanner;
+
+//create a package
+
+public class Day3 {
+
+
+
+public static void main(String[] args) {
+
+Scanner sc=new Scanner(System.in); // Using the Scanner to take the values from the user 
+
+
+
+int sum=0;
+
+System.out.println("Enter your first number:");
+
+int num1=sc.nextInt();
+
+System.out.println("Enter your first number:");
+
+int num2=sc.nextInt();
+
+sum =num1+num2; // Adding both the values entered by the user
+System.out.println("Result of sum="+sum);
+
+}
+}

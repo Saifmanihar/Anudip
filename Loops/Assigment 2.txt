@@ -1,0 +1,59 @@
+package day1; // create the package
+
+import java.util.Scanner;
+
+
+
+public class day3 {
+
+
+
+public static void main(String[] args) {
+
+
+// using Scanner to take the values from the user
+Scanner sc=new Scanner(System.in);
+
+int []arr=new int[10];
+
+int max=Integer.MIN_VALUE;
+
+int min=Integer.MAX_VALUE;
+
+System.out.println("Enter 10 digit number");
+
+for(int i=0;i<10;i++) {  //using for loop
+
+arr[i]=sc.nextInt();
+
+}
+
+for(int i=0;i<10;i++) {
+
+if(arr[i]>max) {
+
+max=arr[i]; //storing the max value
+
+}
+
+}
+
+for(int i=0;i<10;i++) {
+
+if(arr[i]<min) {
+
+min=arr[i]; // storing the min values
+
+}
+
+}
+
+System.out.println("Maximum value :"+max);
+
+System.out.println("Minimum value :"+min);
+
+}
+
+
+
+}

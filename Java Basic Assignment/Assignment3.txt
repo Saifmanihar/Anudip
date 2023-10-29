@@ -1,0 +1,93 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Subject {
+    String name;
+    int marks;
+
+    Subject(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+class Student {
+    String name;
+    String rollNumber;
+    ArrayList<Subject> subjects;
+
+    Student(String name, String rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.subjects = new ArrayList<>();
+    }
+
+    void addSubject(Subject subject) {
+        subjects.add(subject);
+    }
+}
+
+class Teacher {
+    void setMarks(Student student, String subjectName, int marks) {
+        for (Subject subject : student.subjects) {
+            if (subject.name.equals(subjectName)) {
+                subject.marks = marks;
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+
+        // Create 10 students with two subjects each
+        for (int i = 1; i <= 10; i++) {
+            Student student = new Student("Student " + i, "Roll-" + i);
+            student.addSubject(new Subject("Maths", 0));
+            student.addSubject(new Subject("English", 0));
+            students.add(student);
+        }
+
+        Teacher teacher = new Teacher();
+
+        // Input marks for each student and subject
+        for (Student student : students) {
+            for (Subject subject : student.subjects) {
+                System.out.print("Enter marks for " + student.name + " in " + subject.name + ": ");
+                int marks = input.nextInt();
+                teacher.setMarks(student, subject.name, marks);
+            }
+        }
+
+        System.out.print("Enter 'a' to find average marks, 'b' to find max and min marks: ");
+        String choice = input.next();
+
+        if (choice.equals("a")) {
+            int totalMarks = 0;
+            int totalSubjects = 0;
+            // Calculate average marks
+            for (Student student : students) {
+                for (Subject subject : student.subjects) {
+                    totalMarks += subject.marks;
+                    totalSubjects++;
+                }
+            }
+            double averageMarks = (double) totalMarks / totalSubjects;
+            System.out.println("Average marks: " + averageMarks);
+        } else if (choice.equals("b")) {
+            int maxMarks = Integer.MIN_VALUE;
+            int minMarks = Integer.MAX_VALUE;
+            // Find maximum and minimum marks
+            for (Student student : students) {
+                for (Subject subject : student.subjects) {
+                    maxMarks = Math.max(maxMarks, subject.marks);
+                    minMarks = Math.min(minMarks, subject.marks);
+                }
+            }
+            System.out.println("Maximum marks: " + maxMarks);
+            System.out.println("Minimum marks: " + minMarks);
+        }
+    }
+}

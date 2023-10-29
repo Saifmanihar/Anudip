@@ -1,0 +1,13 @@
+package day1; // Create a package
+
+import java.util.Scanner;
+
+public class Day3 {  Create  a class with the name day3
+
+public static void main(String[] args) {
+
+//printing the values With using the println..
+System.out.println("Hello world");
+
+}
+}

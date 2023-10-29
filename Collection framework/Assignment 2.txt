@@ -1,0 +1,21 @@
+import java.util.HashMap;
+
+public class HashMapString {
+    public static void main(String[] args) {
+        // Initialize a HashMap with String keys and String values
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        // Add key-value pairs to the HashMap
+        hashMap.put("key1", "value1");
+        hashMap.put("key2", "value2");
+        hashMap.put("key3", "value3");
+
+        // Display the contents of the HashMap
+        System.out.println("HashMap Contents: " + hashMap);
+
+        // Accessing values by key
+        String key = "key2";
+        String value = hashMap.get(key);
+        System.out.println("Value for key '" + key + "': " + value);
+    }
+}

@@ -1,0 +1,63 @@
+class SharedData {
+    private int[] arr;
+    private int index;
+
+    public SharedData(int[] arr) {
+        this.arr = arr;
+        this.index = 0;
+    }
+
+    public synchronized int getNextValue() {
+        if (index < arr.length) {
+            return arr[index++];
+        }
+        return -1;  // Indicates no more values in the array
+    }
+}
+
+class AverageThread extends Thread {
+    private SharedData sharedData;
+
+    public AverageThread(SharedData sharedData) {
+        this.sharedData = sharedData;
+    }
+
+    @Override
+    public void run() {
+        int sum = 0;
+        for (int i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        double average = (double) sum / 10;
+        System.out.println("Average of the first 10 numbers: " + average);
+    }
+}
+
+class SquareThread extends Thread {
+    private SharedData sharedData;
+
+    public SquareThread(SharedData sharedData) {
+        this.sharedData = sharedData;
+    }
+
+    @Override
+    public void run() {
+        int value;
+        while ((value = sharedData.getNextValue()) != -1) {
+            System.out.println("Square of " + value + " is " + value * value);
+        }
+    }
+}
+
+public class ThreadExample {
+    public static void main(String[] args) {
+        int[] arr = { 1, 20, 50, 15, 30 };
+        SharedData sharedData = new SharedData(arr);
+
+        AverageThread averageThread = new AverageThread(sharedData);
+        SquareThread squareThread = new SquareThread(sharedData);
+
+        averageThread.start();
+        squareThread.start();
+    }
+}
